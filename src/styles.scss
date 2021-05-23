@@ -1,1 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../src/assets/scss/styles';
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @include desktop {
+    max-width: 1200px;
+  }
+  
+  @include tablet {
+    max-width: 900px;
+  }
+  
+  @include mobile {
+    max-width: 100%;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.col {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+
+  .form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    height: 38px;
+    &.error {
+      border-color: #dc3545;
+    }
+  }
+
+  label {
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+
+  .invalid-message {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+  }
+}

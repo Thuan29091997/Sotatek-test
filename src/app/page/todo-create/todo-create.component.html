@@ -1,0 +1,26 @@
+<header class="header w-100">
+  <div class="container">
+    <div class="row">
+      <div class="col w-100">
+        <div>
+          <a [routerLink]="['/list']" class="btn btn-primary">List task</a>
+        </div>
+      </div>
+    </div>
+  </div>  
+</header>
+<main class="main-content">
+  <div class="todo-list">
+    <div class="container">
+      <h1 class="title">{{ title }}</h1>
+    </div>
+    <div class="container">
+      <to-do-form 
+        [formGroup]="formGroup"
+        [isCreate]="true"
+        (submitValue)="submitForm()"
+        [isCreate]="true"
+      ></to-do-form>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,73 @@
+<form class="todo-form" [formGroup]="formGroup">
+  <div class="form-group row">
+    <div class="col w-100">
+      <label>Title <span class="required">*</span></label>
+      <input
+        class="form-control"
+        [class.error]="isSubmit && formGroup?.controls?.title?.errors"
+        type="text"
+        placeholder="Task title"
+        formControlName="title"
+      />
+      <p
+        class="invalid-message"
+        *ngIf="isSubmit && formGroup?.controls?.title?.errors?.required"
+      >
+        Field is required
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col w-100">
+      <label>Description</label>
+      <textarea
+        class="form-control todo-form-description"
+        placeholder="Task description"
+        formControlName="description"
+        row="5"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col w-50 form-group">
+      <label>Due Date</label>
+      <input
+        class="form-control"
+        [class.error]="isSubmit && formGroup?.controls?.dueDate?.errors"
+        type="date"
+        formControlName="dueDate"
+        placeholder="Task title"
+      />
+      <p
+        class="invalid-message"
+        *ngIf="isSubmit && formGroup?.controls?.dueDate?.errors?.minDate"
+      >
+        Must enter future time
+      </p>
+    </div>
+
+    <div class="col w-50 form-group">
+      <label>Piority</label>
+      <select class="form-control" formControlName="piority">
+        <option *ngFor="let item of piority" [value]="item.id">
+          {{ item.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col w-100">
+      <button
+        class="btn btn-success btn-submit w-100"
+        type="submit"
+        (click)="submitForm()"
+        [disabled]="disable && !isCreate"
+        [class.btn-disabled]="disable && !isCreate"
+      >
+        {{ isCreate ? "Add" : "Update" }}
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,51 @@
+$color-primary: #007bff;
+$color-success: #28a745;
+$color-danger: #dc3545;
+$color-disabled: #6c757d;
+$color-primary-hover: #0069d9;
+$color-success-hover: #218838;
+$color-danger-hover: #c82333;
+$color-disabled-hover: #5c636a;
+
+@mixin btn-color($color, $hover-color) {
+  background-color: $color;
+  border-color: $color;
+
+  &:hover {
+    background-color: $hover-color;
+    border-color: $hover-color;
+  }
+}
+
+.btn {
+  min-width: 70px;
+  display: inline-block;
+  color: #fff;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 0.25rem;
+  line-height: 1.5;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &.btn-primary {
+    @include btn-color($color-primary, $color-primary-hover);;
+    color: #fff;
+  }
+
+  &.btn-success {
+    @include btn-color($color-success, $color-success-hover);;
+    color: #fff;
+  }
+
+  &.btn-danger {
+    @include btn-color($color-danger, $color-danger-hover);;
+    color: #fff;
+  }
+
+  &.btn-disabled {
+    @include btn-color($color-disabled, $color-disabled-hover);;
+    color: #fff;
+  }
+}

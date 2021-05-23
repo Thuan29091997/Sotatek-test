@@ -1,0 +1,22 @@
+<div class="todo-item" [class.show-detail]="openDetail">
+  <div class="todo-item-summary">
+    <div class="todo-item-summary_left">
+      <input type="checkbox" [formControl]="checkboxControl" class="checkbox-custom" [id]="formGroups?.value.id">
+      <label [attr.for]="formGroups?.value.id"></label>
+      <p class="title">{{ title }}</p>
+    </div>
+    <div class="todo-item-summary_button">
+      <button class="btn btn-primary" (click)="showDetail()">Detail</button>
+      <button class="btn btn-danger" (click)="remove()">Remove</button>
+    </div>
+  </div>
+  <div class="todo-item-detail" #detail>
+    <to-do-form
+      [isCreate]="false"
+      [value]="defaultValue"
+      class="todo-item-form"
+      [formGroup]="formGroups"
+      (submitValue)="updateTask()"
+    ></to-do-form>
+  </div>
+</div>

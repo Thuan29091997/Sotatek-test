@@ -1,0 +1,23 @@
+$header-height: 70px;
+
+.header {
+  border-bottom: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: #{$header-height};
+  display: flex;
+  align-items: center;
+  z-index: 999;
+}
+
+.main-content {
+  margin-top: #{$header-height};
+  padding-top: 50px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+}

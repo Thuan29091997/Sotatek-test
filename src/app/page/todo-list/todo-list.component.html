@@ -1,0 +1,56 @@
+<header class="header w-100">
+  <div class="container">
+    <div class="row">
+      <div class="col w-100">
+        <div>
+          <a [routerLink]="['/create']" class="btn btn-primary">Create task</a>
+        </div>
+      </div>
+    </div>
+  </div>  
+</header>
+<main class="main-content" [class.show-footer]="isShowFooter">
+  <div class="todo-list">
+    <div class="container">
+      <h1 class="title">{{ title }}</h1>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search..." [formControl]="searchControl">
+      </div>
+      <form *ngIf="tasksForm && !!cloneData.length" [formGroup]="tasksForm">
+        <ng-container formArrayName="tasks">
+          <ng-template ngFor let-task [ngForOf]="tasks.controls" let-i="index">
+            <to-do-item
+              [formGroups]="task"
+              [openDetail]="idActiveTask === task.value.id"
+              (toggleCheckbox)="toggle($event, i)"
+              (removeTask)="removeItem(i)"
+              (showDetailEvent)="idActiveTask = task.value.id"
+            ></to-do-item>
+          </ng-template>
+        </ng-container>
+      </form>
+      <div class="empty-data" *ngIf="!cloneData.length">
+        <img src="../../../assets/images/no-data.png" alt="Empty data image">
+        <ng-template [ngIf]="!keySearching">
+          <h3 class="empty-data-title">No Data</h3>
+        </ng-template>
+        <ng-template [ngIf]="!!keySearching">
+          <h3 class="empty-data-title">Data not found with the key "{{ keySearching }}"</h3>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="container">
+      <div class="col w-100">
+        <div class="footer-content">
+          <p>Bulk Action:</p>
+          <div class="footer-buttons">
+            <button class="btn btn-primary">Done</button>
+            <button class="btn btn-danger" (click)="removeItem()">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
